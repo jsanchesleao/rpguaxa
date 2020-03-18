@@ -1,7 +1,0 @@
-<p *ngIf="title" class="radioGroup-title">{{ title }}: {{selectedItem.text}} </p>
-<div class="radioGroup-container">
-  <label *ngFor="let item of items" class="radioGroup-label" (click)="onChangeSelected(item)">
-    <input type="radio" [name]="name" [value]="item.value" [checked]="item.value === selectedItem.value">
-    <span class="radioGroup-item">{{item.text}}</span>
-  </label>
-</div>
