@@ -24,6 +24,7 @@ export class GameEvent {
 }
 
 export class PlayerCreatedEvent {
+  typeName = 'PlayerCreatedEvent';
   playerName: string;
   constructor(playerName: string){
     this.playerName = playerName
@@ -31,6 +32,7 @@ export class PlayerCreatedEvent {
 }
 
 export class PlayerRemovedEvent {
+  typeName = 'PlayerRemovedEvent';
   playerName: string;
   constructor(playerName: string){
     this.playerName = playerName
@@ -38,6 +40,7 @@ export class PlayerRemovedEvent {
 }
 
 export class PlayerChangedEvent {
+  typeName = 'PlayerChangedEvent';
 
   playerName: string = null;
   nameChanged: string = null;
@@ -56,6 +59,7 @@ export class PlayerChangedEvent {
 }
 
 export class DiceCheckEvent {
+  typeName = 'DiceCheckEvent';
   successes: number;
   critical: number;
   playerName: string;
@@ -74,6 +78,7 @@ export class DiceCheckEvent {
 }
 
 export class SimpleMessageEvent {
+  typeName = 'SimpleMessageEvent'
   text: string;
   constructor(text: string) {
     this.text = text;

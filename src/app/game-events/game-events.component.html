@@ -3,7 +3,7 @@
     *ngFor="let gameEvent of events">
 
     <span class="time">{{ gameEvent.timestamp }}</span> 
-    <span [ngSwitch]="gameEvent.eventType.constructor.name">
+    <span [ngSwitch]="gameEvent.eventType.typeName">
 
       <span *ngSwitchCase="'PlayerCreatedEvent'">
         Jogador(a) <span class="player"> {{ gameEvent.eventType.playerName}}</span> criado(a)
