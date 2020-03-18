@@ -1,0 +1,23 @@
+<ul class="playersList">
+  <li class="playerContainer"
+    *ngFor="let player of players; let id = index">
+   
+    <app-player-item 
+      [player]="player" 
+      [id]="id" 
+      [gameState]="gameState"
+      (editClicked)="onEditClicked($event)"
+      (removeClicked)="onRemoveClicked($event)"
+      *ngIf="editing !== id"></app-player-item>
+
+    <app-player-edit 
+      [player]="player" 
+      (playerEdited)="onEditFinished($event)"
+      *ngIf="editing === id"></app-player-edit>
+
+  </li>
+</ul>
+
+<div class="addPlayer" *ngIf="canAddPlayer()">
+  <app-button (onClick)="onAddNewPlayer()"> Adicionar Jogador(a) </app-button>
+</div>

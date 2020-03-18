@@ -1,0 +1,57 @@
+<ul class="gameEvents" *ngIf="events && events.length > 0">
+  <li class="gameEvent"
+    *ngFor="let gameEvent of events">
+
+    <span class="time">{{ gameEvent.timestamp }}</span> 
+    <span [ngSwitch]="gameEvent.eventType.constructor.name">
+
+      <span *ngSwitchCase="'PlayerCreatedEvent'">
+        Jogador(a) <span class="player"> {{ gameEvent.eventType.playerName}}</span> criado(a)
+      </span>
+
+      <span *ngSwitchCase="'PlayerRemovedEvent'">
+        Jogador(a) <span class="player"> {{ gameEvent.eventType.playerName}}</span> removido(a)
+      </span>
+
+      <span *ngSwitchCase="'PlayerChangedEvent'">
+        Jogador(a) <span class="player"> {{ gameEvent.eventType.playerName}}</span> alterou:
+        <span *ngIf="gameEvent.eventType.nameChanged">
+          nome para <span class="player">{{ gameEvent.eventType.nameChanged }}</span>; 
+        </span>
+        <span *ngIf="gameEvent.eventType.attributeChanged"> 
+          atributo de <span class="attribute">{{ gameEvent.eventType.attributeChanged[0] }}</span>
+          para <span class="attribute">{{ gameEvent.eventType.attributeChanged[1] }}</span>; 
+        </span>
+        <span *ngIf="gameEvent.eventType.descriptionChanged"> 
+          descrição para <span class="description">{{ gameEvent.eventType.descriptionChanged }}</span>
+        </span>
+      </span>
+
+      <span *ngSwitchCase="'SimpleMessageEvent'">
+        {{gameEvent.eventType.text}}
+      </span>
+
+      <span *ngSwitchCase="'DiceCheckEvent'">
+        <span class="player">{{gameEvent.eventType.playerName}}</span>({{gameEvent.eventType.attribute}})
+        tentou uma ação 
+          <strong *ngIf="gameEvent.eventType.actionType === 'physical'">física</strong> 
+          <strong *ngIf="gameEvent.eventType.actionType === 'not-physical'">não física</strong> 
+        e rolou
+        (<span class="number">{{ gameEvent.eventType.rolls.join(', ') }}</span>).
+
+        <span class="player" *ngIf="gameEvent.eventType.critical > 0"> Acerto crítico! </span>
+        <span class="success" *ngIf="gameEvent.eventType.successes > 0 && gameEvent.eventType.critical === 0"> Sucesso. </span>
+        <span class="failure" *ngIf="gameEvent.eventType.successes === 0 && gameEvent.eventType.critical === 0"> Falhou. </span>
+
+      </span>
+
+
+      <span *ngSwitchDefault>
+        {{ gameEvent.eventType.constructor.name }}
+      </span>
+
+
+    </span>
+  </li>
+</ul>
+

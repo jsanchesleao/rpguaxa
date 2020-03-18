@@ -1,0 +1,50 @@
+<div *ngIf="diceCheck">
+  <div class="diceRollOverlay" (click)="onCancel()"></div>
+  <div class="diceRollContainer">
+
+    <h2> Rolagem </h2>
+
+    <select class="playersSelect" (input)="onSelectPlayer()" #playerSelect>
+      <option value="-1"> --- </option>
+      <option *ngFor="let player of players; let id = index" [value]="id">
+        {{ player.name }}
+      </option>
+    </select>
+
+    <app-radio-group 
+      class="difficultySelect"
+      [items]="difficultyLevels" 
+      [selectedItem]="getSelectedDifficulty()"
+      (valueSelected)="onSelectDifficulty($event)"
+      name="difficulty"
+      title="difficulty"
+      ></app-radio-group>
+
+    <app-radio-group 
+      class="actionTypeSelect"
+      [items]="actionTypes" 
+      [selectedItem]="getSelectedActionType()"
+      (valueSelected)="onSelectCheckType($event)"
+      name="actionType"
+      title="action type"
+      ></app-radio-group>
+
+    <div class="actionsGroup">
+      <app-button 
+        class="actionButton"
+        category="primary" 
+        [disabled]="!isRollEnabled()" 
+        (click)="onRoll()"
+        >
+        Rolar
+      </app-button>
+      <app-button 
+        class="actionButton"
+        category="default" 
+        (click)="onCancel()"
+        >
+        Cancelar
+      </app-button>
+    </div>
+  </div>
+</div>

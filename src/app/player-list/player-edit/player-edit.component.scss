@@ -1,0 +1,39 @@
+.playerAttribute {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 20px;
+  width: 2.3em;
+  height: 1.5em;
+  font-weight: bold;
+  line-height: 1.5em;
+  text-align: center;
+}
+
+.playerName {
+  font-size: 20px;
+  padding: 5px;
+  display: inline-block;
+  border: none;
+  border-bottom: 1px solid black;
+  margin: 0 5px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.playerDescription {
+  padding: 5px 10px;
+  width: 90%;
+  margin: 5px;
+  font-size: 14px;
+  font-style: italic;
+  color: #444;
+  resize: none;
+  border: 1px dashed #444;
+
+  &:focus {
+    outline: none;
+  }
+ }

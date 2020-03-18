@@ -1,0 +1,44 @@
+.diceRollOverlay {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .4);
+}
+
+.diceRollContainer {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 15px;
+
+  z-index: 1;
+  background-color: white;
+  box-shadow: 0 0 5px black;
+  width: 400px;
+  min-height: 300px;
+}
+
+.playersSelect {
+  margin: 5px;
+  font-size: 18px;
+}
+
+.difficultySelect {
+  margin: 5px;
+}
+
+.actionTypeSelect {
+  margin: 5px;
+}
+
+.actionsGroup {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
